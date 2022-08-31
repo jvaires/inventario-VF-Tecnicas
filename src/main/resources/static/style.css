@@ -26,8 +26,12 @@ body{
     align-items: center;
     gap: 20px;
     margin-left: 45px;
-    height: 4.5em;
+    height: 3em;
 }
+.boxSearch{
+    height: 4em;
+}
+
 header fieldset{
     width: 10em;
     background-color: #0d1117;
@@ -44,7 +48,6 @@ header fieldset{
     margin-left: 20px;
     border: none;
     color: white;
-    height: 2.5em;
     width: 20em;
     font-size: 20px;
 }
