@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang=pt-br>
+<html lang=pt-br xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -23,9 +23,11 @@
         </div>
     </header>
     <section style="color: white;">
-        <tr th:each="commits: ${commit}">
-            <th  th:text="${commits}"></th>
+
+        <tr  th:each="commit: ${commits}">
+            <th th:text="${commit.mensagem}"></th>
         </tr>
+
 <!--        <div class="sub-header">-->
 <!--            <div class="titulo-subheader">-->
 <!--                <p><a href="#">alexfrt</a> /<a href="#">uni7-tecnicas-2022.2</a></p>-->

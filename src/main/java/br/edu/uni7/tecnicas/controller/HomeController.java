@@ -13,7 +13,7 @@ public class HomeController {
     public ModelAndView home() {
         var commit1 = List.of(new Commit("Inittial commit", 1234), new Commit("Update", 4321));
         ModelAndView commits = new ModelAndView("index.html");
-        commits.addObject("commit", commit1.toString());
+        commits.addObject("commits", commit1);
         return commits;
     }
 
