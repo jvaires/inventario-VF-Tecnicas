@@ -22,11 +22,19 @@
             <div>Explore</div>
         </div>
     </header>
-    <section style="color: white;">
-
-        <tr  th:each="commit: ${commits}">
-            <th th:text="${commit.mensagem}"></th>
-        </tr>
+    <section>
+        <div class="partCommit">
+            <div class="commit" th:each="commit: ${commits}">
+                <div class="dadosCommit">
+                    <div><th class="mensagem" th:text="${commit.mensagem}"></th></div>
+                    <div class="autorData">
+                        <p th:text="${commit.autor}"></p>
+                        <p th:text="${commit.data}"></p>
+                    </div>
+                </div>
+                <fieldset class="codigo" th:text="${commit.codigo}"></fieldset>
+            </div>
+        </div>
 
 <!--        <div class="sub-header">-->
 <!--            <div class="titulo-subheader">-->

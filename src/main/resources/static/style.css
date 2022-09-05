@@ -66,3 +66,36 @@ header fieldset{
     display: flex;
     justify-content: center;
 }
+section{
+    color: white;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+
+}
+.partCommit{
+    border: 1px solid #919191;
+    width: 70rem;
+    height: 30rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.commit{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid #919191;
+    height: 4rem;
+    gap: 45rem;
+}
+.autorData{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+.dadosCommit{
+    margin-left: 1rem;
+}

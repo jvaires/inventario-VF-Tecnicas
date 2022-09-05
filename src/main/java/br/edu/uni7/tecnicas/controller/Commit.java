@@ -1,6 +1,5 @@
 package br.edu.uni7.tecnicas.controller;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Commit {
@@ -9,9 +8,10 @@ public class Commit {
     private int codigo;
     private String autor;
 
-    public Commit(String mensagem, int codigo){
+    public Commit(String mensagem, String autor, int codigo){
         this.mensagem = mensagem;
         this.data = new Date();
+        this.autor = autor;
         this.codigo = codigo;
     }
     public String getMensagem() {
@@ -36,6 +36,14 @@ public class Commit {
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
     @Override
     public String toString() {
         return "Commit{" +
@@ -44,4 +52,5 @@ public class Commit {
                 ", codigo=" + codigo +
                 '}';
     }
+
 }
