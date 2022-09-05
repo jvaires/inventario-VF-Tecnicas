@@ -76,7 +76,7 @@ section{
 
 }
 .partCommit{
-    border: 1px solid #919191;
+    border: 1px solid #5e5e5e;
     width: 70rem;
     height: 30rem;
     border-radius: 10px;
@@ -87,9 +87,9 @@ section{
     display: flex;
     flex-direction: row;
     align-items: center;
-    border-bottom: 1px solid #919191;
+    border-bottom: 1px solid #5e5e5e;
     height: 4rem;
-    gap: 45rem;
+    gap: 42rem;
 }
 .autorData{
     display: flex;
@@ -98,4 +98,13 @@ section{
 }
 .dadosCommit{
     margin-left: 1rem;
+}
+fieldset{
+    display: flex;
+    flex-direction: row;
+    border-color: #5e5e5e;
+
+}
+fieldset ion-icon{
+    border-right: 1px solid #5e5e5e;
 }

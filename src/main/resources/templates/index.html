@@ -32,7 +32,10 @@
                         <p th:text="${commit.data}"></p>
                     </div>
                 </div>
-                <fieldset class="codigo" th:text="${commit.codigo}"></fieldset>
+                <fieldset>
+                    <ion-icon name="copy-outline"></ion-icon>
+                    <div class="codigo" th:text="${commit.codigo}"></div>
+                </fieldset>
             </div>
         </div>
 
@@ -61,5 +64,7 @@
 <!--            </div>-->
 <!--        </div>-->
     </section>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
