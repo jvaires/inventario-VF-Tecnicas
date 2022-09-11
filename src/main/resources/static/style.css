@@ -90,6 +90,11 @@ section{
     border-bottom: 1px solid #5e5e5e;
     height: 4rem;
     gap: 42rem;
+    transition: 0.5s
+}
+.commit:hover{
+    background-color: #919191;
+    cursor: pointer;
 }
 .autorData{
     display: flex;
