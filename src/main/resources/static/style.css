@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 header{
     background-color: #161b22;
     height: 4.5em;
@@ -11,14 +12,17 @@ header{
     display: flex;
     align-items: center;
 }
+
 header img{
     width: 2.5em;
     height: 2.5em;
 }
+
 body{
     background-color: #0d1117;
     font-family: sans-serif;
 }
+
 .right{
     color: white;
     display: flex;
@@ -28,6 +32,7 @@ body{
     margin-left: 45px;
     height: 3em;
 }
+
 .boxSearch{
     height: 4em;
 }
@@ -41,6 +46,7 @@ header fieldset{
     border-radius: 5px;
     border: 0.5px solid #525252;
 }
+
 #search{
     outline: none;
     resize: none;
@@ -51,21 +57,25 @@ header fieldset{
     width: 20em;
     font-size: 20px;
 }
+
 #search::placeholder{
     font-size: 20px;
     margin-left: 5px;
     color: #bdbdbd;
 }
+
 .right div:hover{
     color: darkgray;
     cursor: pointer;
 }
+
 .barra{
     width: 1.5em;
     height: 1.5em;
     display: flex;
     justify-content: center;
 }
+
 section{
     color: white;
     height: 100vh;
@@ -73,43 +83,236 @@ section{
     display: flex;
     justify-content: center;
     margin-top: 2rem;
+}
+
+.part-commit{
 
 }
-.partCommit{
-    border: 1px solid #5e5e5e;
-    width: 70rem;
-    height: 30rem;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-}
+
 .commit{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border-bottom: 1px solid #5e5e5e;
-    height: 4rem;
-    gap: 42rem;
-    transition: 0.5s
+    margin-top: 0 !important;
+    display: flex !important;
+    padding: 10px;
+    list-style-type: none;
+    border-top-style: solid;
+    border-top-width: 1px;
 }
+
+.color-muted {
+    color: #8b949e;
+}
+
 .commit:hover{
-    background-color: #919191;
-    cursor: pointer;
+
 }
+
 .autorData{
     display: flex;
     flex-direction: row;
     gap: 1rem;
 }
-.dadosCommit{
-    margin-left: 1rem;
+
+.dados-commit{
+    flex: auto !important;
 }
+
+.acoes-commit{
+
+}
+
 fieldset{
     display: flex;
     flex-direction: row;
     border-color: #5e5e5e;
-
 }
+
 fieldset ion-icon{
     border-right: 1px solid #5e5e5e;
+}
+
+.top-field-text
+{
+    margin-bottom: 4px;
+}
+
+.link-primary
+{
+    color: #c9d1d9;
+    text-decoration: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.commit-nome
+{
+    font-weight: 600;
+    color: #c9d1d9;
+    white-space: nowrap;
+    text-decoration: none;
+    background-color: transparent;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.div-autor-data
+{
+    display: flex;
+    font-size: 12px;
+}
+
+.p-01
+{
+    width: max-content;
+    display: flex;
+}
+
+ol {
+    display: block;
+    list-style-type: decimal;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.timeline-item {
+    position: relative;
+    display: flex;
+    padding: 16px 0;
+    margin-left: 16px;
+    padding-bottom: 8px !important;
+    padding-top: 0 !important;
+}
+
+.timeline-item::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 7px;
+    display: block;
+    width: 2px;
+    content: "";
+    background-color: #8b949e;
+}
+
+.timeline-item-body {
+    min-width: 0;
+    max-width: 100%;
+    margin-top: 4px;
+    color: #30363d;
+    flex: auto;
+}
+
+div {
+    display: block;
+}
+
+.box {
+    background-color: #0d1117;
+    border-color: #30363d;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 6px;
+}
+
+.commit:first-of-type {
+   border-top-left-radius: 6px;
+   border-top-right-radius: 6px;
+   border-top-color: transparent;
+   border-top-left-radius: 6px;
+   border-top-right-radius: 6px;
+}
+
+.timeline {
+    margin: auto;
+    width:60%;
+    border: transparent;
+    padding: 10px;
+}
+
+.btn-group {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.btn-group-item {
+    color: v#c9d1d9;
+    background-color: #21262d;
+    border-color: rgba(240,246,252,0.1);
+    box-shadow: 0 0 transparent,0 0 transparent;;
+    transition: 80ms cubic-bezier(0.33, 1, 0.68, 1);
+    transition-property: color,background-color,box-shadow,border-color;
+    display: inline-block;
+    padding: 5px 16px;
+    font-weight: 500;
+    line-height: 20px;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid;
+    appearance: none;
+    float: left;
+    border-right-width: 0;
+    border-radius: 0;
+
+    border-color: #30363d;
+}
+
+.btn-group-item:last-child {
+    border-right-width: 1px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.btn-group-item:first-child {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.sha-commit {
+    color: #58a6ff;
+    font-size: 12px !important;
+    position: relative;
+}
+
+.h2-commit-date {
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: block;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    color: #8b949e;
+}
+
+.timeline-item-badge {
+    height: 16px;
+    margin-top: 16px;
+    color: #8b949e;
+    background-color: #0d1117;
+    border: 0;
+    position: relative;
+    z-index: 1;
+    width: 32px;
+    align-items: center;
+    border-radius: 50%;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.commit-item-icon {
+    display: inline-block;
+    overflow: visible !important;
+    vertical-align: text-bottom;
+    fill: currentColor;
+}
+
+.position-relative {
+    position: relative !important;
 }

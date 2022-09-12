@@ -12,7 +12,7 @@
     <header>
         <div class="right">
             <img src="/img/github.png">
-            <fieldset classs="boxSearch">
+            <fieldset class="boxSearch">
                 <input id="search" type="text" placeholder="Search or jump to...">
                 <fieldset class="barra">/</fieldset>
             </fieldset>
@@ -22,48 +22,45 @@
             <div>Explore</div>
         </div>
     </header>
-    <section>
-        <div class="partCommit">
-            <div class="commit" th:each="commit: ${commits}">
-                <div class="dadosCommit">
-                    <div><th class="mensagem" th:text="${commit.mensagem}"></th></div>
-                    <div class="autorData">
-                        <p th:text="${commit.autor}"></p>
-                        <p th:text="${commit.data}"></p>
-                    </div>
+
+    <div class="position-relative"></div>
+
+    <div class="timeline">
+        <div th:each="commit: ${commits}">
+            <div class="timeline-item">
+                <div class="timeline-item-badge">
+                    <svg class="commit-item-icon">
+                        <path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm1.43.75a4.002 4.002 0 01-7.86 0H.75a.75.75 0 110-1.5h3.32a4.001 4.001 0 017.86 0h3.32a.75.75 0 110 1.5h-3.32z">
+                        </path>
+                    </svg>
                 </div>
-                <fieldset>
-                    <ion-icon name="copy-outline"></ion-icon>
-                    <div class="codigo" th:text="${commit.codigo}"></div>
-                </fieldset>
+                <div class="timeline-item-body">
+                    <h2 class="h2-commit-date" th:text="'Commits on ' + ${#dates.format(commit.getKey, 'MMM dd, yyyy')}"></h2>
+                    <ol class="box">
+                        <li class="commit" th:each="commitItem: ${commit.getValue}">
+                            <div class="dados-commit">
+                                <p class="p-01">
+                                    <a class="link-primary top-field-text" th:text="${commitItem.mensagem}"></a>
+                                </p>
+                                <div class="div-autor-data">
+                                    <a class="commit-nome" th:text="${commitItem.autor.nome}"></a>
+                                    <div class="color-muted">&nbsp;commited&nbsp;</div>
+                                    <div class="color-muted" th:text="${commitItem.getIntervaloCommit}"></div>
+                                    <div class="color-muted">&nbsp;ago</div>
+                                </div>
+                            </div>
+                            <div class="acoes-commit">
+                                <div class="btn-group">
+                                    <button class="btn-group-item"><ion-icon name="copy-outline"></ion-icon></button>
+                                    <a class="btn-group-item sha-commit" th:text="${commitItem.getCodigoAbreviado}"></a>
+                                </div>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
             </div>
         </div>
-
-<!--        <div class="sub-header">-->
-<!--            <div class="titulo-subheader">-->
-<!--                <p><a href="#">alexfrt</a> /<a href="#">uni7-tecnicas-2022.2</a></p>-->
-<!--            </div>-->
-<!--            <div class="options">-->
-<!--                <ul>-->
-<!--                    <li>Watch</li>-->
-<!--                    <li>Fork</li>-->
-<!--                    <li>Star</li>-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--            <div class="funcions">-->
-<!--                <ul>-->
-<!--                    <li>Code</li>-->
-<!--                    <li>Issues</li>-->
-<!--                    <li>Pull Request</li>-->
-<!--                    <li>Actions</li>-->
-<!--                    <li>Projects</li>-->
-<!--                    <li>Wiki</li>-->
-<!--                    <li>Security</li>-->
-<!--                    <li>Insights</li>-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--        </div>-->
-    </section>
+    </div>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
