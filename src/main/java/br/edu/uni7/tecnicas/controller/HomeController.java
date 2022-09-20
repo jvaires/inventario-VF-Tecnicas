@@ -75,5 +75,10 @@ public class HomeController {
 
         return commitsAgrupados;
     }
+    @RequestMapping("/jsonhtml")
+    public ModelAndView jsonhtml(){
+        ModelAndView modelViewCommits = new ModelAndView("jshmtl.html");
+        return modelViewCommits;
+    }
 
 }
