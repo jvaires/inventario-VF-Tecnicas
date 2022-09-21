@@ -11,6 +11,7 @@ public class Commit{
     private String mensagem;
     private Date data;
     private String codigo;
+
     private byte[] codigoSha;
     private Usuario autor;
 
