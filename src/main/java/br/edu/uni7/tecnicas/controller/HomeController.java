@@ -18,8 +18,7 @@ import java.util.stream.Collectors;
 @Controller
 public class HomeController {
     @RequestMapping("/")
-    @ResponseBody
-    public Map<Date, List<Commit>> commitsjson() throws ParseException{
+    public ModelAndView commitsjson() throws ParseException{
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
@@ -73,12 +72,6 @@ public class HomeController {
 
         modelViewCommits.addObject("commits", commitsAgrupados);
 
-        return commitsAgrupados;
-    }
-    @RequestMapping("/jsonhtml")
-    public ModelAndView jsonhtml(){
-        ModelAndView modelViewCommits = new ModelAndView("jshmtl.html");
         return modelViewCommits;
     }
-
 }
