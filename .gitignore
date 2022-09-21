@@ -48,6 +48,8 @@ spring-*/src/main/java/META-INF/MANIFEST.MF
 out
 test-output
 atlassian-ide-plugin.xml
+/.idea/
+.idea/workspace.xml
 
 # VS Code
 .vscode/
