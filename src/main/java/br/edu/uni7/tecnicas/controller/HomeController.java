@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @Controller
 public class HomeController {
     @RequestMapping("/")
-    public ModelAndView commitsjson() throws ParseException{
+    public ModelAndView home() throws ParseException{
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
