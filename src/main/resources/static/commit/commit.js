@@ -1,14 +1,27 @@
-var baseUrl = 'http://localhost:8080';
+const baseUrl = 'http://localhost:8080';
 
-var commitsEndpoint = baseUrl + '/api/commits';
-var commitItemEndpoint = baseUrl + '/commititem';
-var commitItemGroupEndpoint = baseUrl + '/commititemgroup';
+const commitsEndpoint = baseUrl + '/api/commits';
+const commitItemEndpoint = baseUrl + '/commit_item.html';
+const commitItemGroupEndpoint = baseUrl + '/commit_item_group.html';
 
 window.onload = function getBody() {
     carregarCommits();
 }
 
 function carregarCommits() {
+    let htmlItemGroup;
+    fetch(commitItemGroupEndpoint)
+        .then((response) => response.text())
+        .then((html) => {
+            htmlItemGroup = html;
+        });
+
+    let htmlItem;
+    fetch(commitItemEndpoint)
+        .then((response) => response.text())
+        .then((html) =>{
+            htmlItem = html;
+        });
 
     fetch(commitsEndpoint)
         .then((response) => response.json())
@@ -18,38 +31,27 @@ function carregarCommits() {
                 for(const [key, value] of Object.entries(data))
                 {
                     let timeline = document.getElementById('timeline-content-commits');
+                    let parser = new DOMParser();
 
-                    fetch(commitItemGroupEndpoint)
-                        .then((response) => response.text())
-                        .then((html) => {
+                    const docCommitGroup = parser.parseFromString(htmlItemGroup, "text/html");
 
-                            let parser = new DOMParser();
+                    docCommitGroup.getElementById('data-commit').textContent = 'Commits on ' + formatarData(Date.parse(key));
 
-                            const docCommitGroup = parser.parseFromString(html, "text/html");
+                    const commitItemDom = docCommitGroup.getElementById('commit-item');
 
-                            docCommitGroup.getElementById('data-commit').textContent = 'Commits on ' + formatarData(Date.parse(key));
+                    for(let commitItem of value)
+                    {
+                        let docCommitItem = parser.parseFromString(htmlItem, "text/html");
 
-                            const commitItemDom = docCommitGroup.getElementById('commit-item');
+                        docCommitItem.getElementById('nome-commit').textContent = commitItem.autor.nome;
+                        docCommitItem.getElementById('periodo-commit').textContent = commitItem.intervaloCommit;
+                        docCommitItem.getElementById('mensagem-commit').textContent = commitItem.mensagem;
+                        docCommitItem.getElementById('sha-commit').textContent = commitItem.codigoAbreviado;
 
-                            for(let commitItem of value)
-                            {
-                                fetch(commitItemEndpoint)
-                                    .then((response) => response.text())
-                                    .then((html) => {
+                        commitItemDom.appendChild(docCommitItem.body);
+                    }
 
-                                        let docCommitItem = parser.parseFromString(html, "text/html");
-
-                                        docCommitItem.getElementById('nome-commit').textContent = commitItem.autor.nome;
-                                        docCommitItem.getElementById('periodo-commit').textContent = commitItem.intervaloCommit;
-                                        docCommitItem.getElementById('mensagem-commit').textContent = commitItem.mensagem;
-                                        docCommitItem.getElementById('sha-commit').textContent = commitItem.codigoAbreviado;
-
-                                        commitItemDom.appendChild(docCommitItem.body);
-                                    });
-                            }
-
-                            timeline.appendChild(docCommitGroup.body);
-                        });
+                    timeline.appendChild(docCommitGroup.body);
                 }
             }
         });

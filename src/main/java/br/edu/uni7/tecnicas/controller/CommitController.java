@@ -20,17 +20,7 @@ public class CommitController {
 
     @RequestMapping("/commits")
     public ModelAndView commits() {
-        return new ModelAndView("../pages/commit/commits.html");
-    }
-
-    @RequestMapping("/commititem")
-    public ModelAndView commitItem() {
-        return new ModelAndView("../pages/commit/commit_item.html");
-    }
-
-    @RequestMapping("/commititemgroup")
-    public ModelAndView commitItemGroup() {
-        return new ModelAndView("../pages/commit/commit_item_group.html");
+        return new ModelAndView("../static/commit/commits.html");
     }
 
     @RequestMapping("api/commits")
