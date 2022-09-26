@@ -17,8 +17,9 @@ import java.util.stream.Collectors;
 
 @Controller
 public class CommitController {
-
     @RequestMapping("api/commits")
+
+    @RequestMapping(value = "api/commits", method =)
     @ResponseBody
     public Map<Date, List<Commit>> listCommits() throws ParseException {
 

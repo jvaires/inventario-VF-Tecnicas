@@ -17,6 +17,11 @@ header img{
     width: 2.5em;
     height: 2.5em;
 }
+.botao{
+    padding: 10px 15px;
+    background: green;
+    margin-left: 10rem;
+}
 
 body{
     background-color: #0d1117;
