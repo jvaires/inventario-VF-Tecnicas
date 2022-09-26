@@ -18,11 +18,6 @@ import java.util.stream.Collectors;
 @Controller
 public class CommitController {
 
-    @RequestMapping("/commits")
-    public ModelAndView commits() {
-        return new ModelAndView("../static/commit/commits.html");
-    }
-
     @RequestMapping("api/commits")
     @ResponseBody
     public Map<Date, List<Commit>> listCommits() throws ParseException {
