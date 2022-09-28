@@ -19,11 +19,60 @@ header img{
 }
 .botao{
     padding: 10px 15px;
-    background: green;
-    margin-left: 10rem;
+    background: #41be03;
+    margin-left: 900px;
+    color: #fff;
+    border-radius: 10px;
+    font-weight: 800;
+    font-family: 'Roboto', sans-serif;
+}
+.body-create{
+    display: grid;
+    justify-content: center;
+    background: #0d1117;
+}
+.formulario{
+    display: grid;
+    justify-items: center;
+    gap: 20px;
+    place-items: center;
+    border: 1px solid #30363d;
+    margin: 20px;
+    padding: 20px;
+    margin-top: 150px;
+    background: transparent;
+    border-radius: 10px;
+}
+.commit-title{
+    color: #6aee31;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 15px;
+}
+.area-label input{
+    background: #30363d;
+    border-style: none;
+    margin-bottom: 20px;
+    height: 30px;
+    width: 200px;
+    color: white;
+}
+#msg{
+    width: 200px;
+    height: 200px;
+}
+.submit{
+    place-self: center;
+    background: #6aee31;
+    padding: 15px 30px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    border-style: none;
+
 }
 
-body{
+.body-main{
     background-color: #0d1117;
     font-family: sans-serif;
 }
