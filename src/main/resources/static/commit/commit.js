@@ -65,3 +65,4 @@ function formatarData(data)
 
     return `${mo}. ${da}, ${ye}`;
 }
+
