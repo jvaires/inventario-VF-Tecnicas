@@ -10,15 +10,15 @@
 </head>
 <body class="body-create">
     <div class="formulario">
-        <form action="http://localhost:8080/api/commits" method="post">
+        <form action="http://localhost:8080/api/commits" method="post" onsubmit="cadastraCommit()">
             <h1 class="commit-title">Commit</h1>
             <div class="area-label">
 <!--                <label for="username">Username</label>-->
-                <input name="username" id="username" placeholder="Username">
+                <input type="email" name="username"  id="username" placeholder="Username"/>
             </div>
             <div class="area-label">
 <!--                <label for="msg">Mensagem</label>-->
-                <input name="mensagem" id="msg" placeholder="Mensagem">
+                <input type="text" name="mensagem" id="msg" placeholder="Mensagem"/>
             </div>
             <button type="submit" class="submit">Submit</button>
         </form>

@@ -7,6 +7,58 @@ const commitItemGroupEndpoint = baseUrl + '/commit_item_group.html';
 window.onload = function getBody() {
     carregarCommits();
 }
+    // const update = {
+    //     autor: document.getElementById("username").value,
+    //     mensagem: document.getElementById("msg").value
+    // }
+    // const options ={
+    //     method: "POST",
+    //     headers: {
+    //         "Content-type": "application/json"
+    //     },
+    //     body: JSON.stringify(update)
+    // }
+    //
+    // fetch(commitsEndpoint, options)
+    //     .then(data =>{
+    //         if (!data.ok){
+    //             throw Error(data.status)
+    //         }
+    //         return data.json()
+    //     }).then(update => {
+    //         console.log(update)
+    // }).catch(e => {
+    //     console.log(e)
+    // })
+
+
+// function fazPost(url, body){
+//     console.log("Body= ", body)
+//     let request = new XMLHttpRequest()
+//     request.open("POST", url, true)
+//     request.setRequestHeader("Content-type", "application/json")
+//     request.send(JSON.stringify(body))
+//
+//     request.onload = function (){
+//         console.log(this.responseText)
+//     }
+//     return request.responseText
+// }
+// function cadastraCommit(){
+//     event.preventDefault()
+//     let url = "http://localhost:8080/api/commits"
+//     let autor = document.getElementById("username").value
+//     let mensagem = document.getElementById("msg").value
+//     console.log(autor)
+//     console.log(mensagem)
+//
+//     let body = {
+//         "name": autor,
+//         "mensage": mensagem
+//     }
+//
+//     fazPost(url, body)
+// }
 
 function carregarCommits() {
     let htmlItemGroup;
