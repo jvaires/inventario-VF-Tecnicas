@@ -57,10 +57,7 @@ header img{
     width: 200px;
     color: white;
 }
-#msg{
-    width: 200px;
-    height: 200px;
-}
+
 .submit{
     place-self: center;
     background: #6aee31;

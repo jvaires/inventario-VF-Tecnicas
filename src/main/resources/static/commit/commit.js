@@ -1,23 +1,13 @@
-const baseUrl = 'http://localhost:8080';
-
-const commitsEndpoint = baseUrl + '/api/commits';
-const commitItemEndpoint = baseUrl + '/commit_item.html';
-const commitItemGroupEndpoint = baseUrl + '/commit_item_group.html';
-
-window.onload = function getBody() {
-    carregarCommits();
-}
-
-function carregarCommits() {
+async function carregarCommits() {
     let htmlItemGroup;
-    fetch(commitItemGroupEndpoint)
+    await fetch(commitItemGroupEndpoint)
         .then((response) => response.text())
         .then((html) => {
             htmlItemGroup = html;
         });
 
     let htmlItem;
-    fetch(commitItemEndpoint)
+    await fetch(commitItemEndpoint)
         .then((response) => response.text())
         .then((html) =>{
             htmlItem = html;
@@ -39,10 +29,11 @@ function carregarCommits() {
 
                     const commitItemDom = docCommitGroup.getElementById('commit-item');
 
-                    for(let commitItem of value)
-                    {
+                    for (let commitItem of value) {
+
                         let docCommitItem = parser.parseFromString(htmlItem, "text/html");
 
+                        docCommitItem.getElementById('commit-li').setAttribute('item-id', commitItem.codigo);
                         docCommitItem.getElementById('nome-commit').textContent = commitItem.autor.nome;
                         docCommitItem.getElementById('periodo-commit').textContent = commitItem.intervaloCommit;
                         docCommitItem.getElementById('mensagem-commit').textContent = commitItem.mensagem;
@@ -66,3 +57,4 @@ function formatarData(data)
     return `${mo}. ${da}, ${ye}`;
 }
 
+window.addEventListener("load", carregarCommits);

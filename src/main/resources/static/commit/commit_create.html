@@ -5,20 +5,21 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <script src="/commit_create.js"></script>
+    <script src="../common.js"></script>
     <link rel="stylesheet" href="style.css">
+
+    <title>Document</title>
 </head>
 <body class="body-create">
     <div class="formulario">
-        <form action="http://localhost:8080/api/commits" method="post">
+        <form id="form-create-commit" action="">
             <h1 class="commit-title">Commit</h1>
             <div class="area-label">
-<!--                <label for="username">Username</label>-->
-                <input name="username" id="username" placeholder="Username">
+                <input name="autor" id="autor-input" placeholder="Username">
             </div>
-            <div class="area-label">
-<!--                <label for="msg">Mensagem</label>-->
-                <input name="mensagem" id="msg" placeholder="Mensagem">
+            <div class="area-label"-->
+                <input name="mensagem" id="mensagem-input" placeholder="Mensagem">
             </div>
             <button type="submit" class="submit">Submit</button>
         </form>
