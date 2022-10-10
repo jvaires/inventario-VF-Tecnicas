@@ -6,11 +6,12 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="/commit.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="body-create">
     <div class="formulario">
-        <form action="http://localhost:8080/api/commits" method="post">
+        <form >
             <h1 class="commit-title">Commit</h1>
             <div class="area-label">
 <!--                <label for="username">Username</label>-->
@@ -20,8 +21,9 @@
 <!--                <label for="msg">Mensagem</label>-->
                 <input id="msg" placeholder="Mensagem">
             </div>
-            <button type="submit" class="submit">Submit</button>
+            <button type="button" onclick="sendJSON()" class="submit">Submit</button>
         </form>
     </div>
+
 </body>
 </html>
