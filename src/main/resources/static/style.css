@@ -57,10 +57,8 @@ header img{
     width: 200px;
     color: white;
 }
-#msg{
-    width: 200px;
-    height: 200px;
-}
+
+
 .submit{
     place-self: center;
     background: #6aee31;
@@ -69,6 +67,7 @@ header img{
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     border-style: none;
+    border-radius: 0.375rem;;
 
 }
 
@@ -369,4 +368,37 @@ div {
 
 .position-relative {
     position: relative !important;
+}
+
+.modal-content {
+    justify-items: center;
+    background-color: #161b22;
+}
+
+.btn-primary {
+    margin-left: 900px;
+    background-color: #41be03;
+    border-bottom-color: #41be03;
+}
+
+.btn-primary:hover {
+    background: #3dac03;
+
+}
+.btn-primary:focus {
+    background: #3dac03;
+}
+
+.modal-title {
+    color: white;
+    align-content: center;
+}
+
+.col-form-label {
+    color: white;
+}
+
+.form-control {
+    background-color: #30363d;
+
 }

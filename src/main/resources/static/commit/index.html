@@ -8,7 +8,9 @@
     <script src="/commit.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/style.css">
     <link rel="icon" href="/img/github.png">
 
@@ -28,9 +30,37 @@
         <div>Explore</div>
     </div>
 </header>
-<button class="botao" onclick="location.href='http://localhost:8080/commit_create.html'">New Commit</button>
-<div class="position-relative"></div>
+<!-- Button trigger modal -->
+<button type="button" name="newcommit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    New Commit
+</button>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">COMMIT</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="username" class="col-form-label">Username:</label>
+                        <input type="text" class="form-control" id="username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="msg" class="col-form-label">Message:</label>
+                        <textarea class="form-control" id="msg"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" onclick="sendJSON()" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+    </div>
 <div class="timeline">
     <div id="timeline-content-commits">
     </div>
