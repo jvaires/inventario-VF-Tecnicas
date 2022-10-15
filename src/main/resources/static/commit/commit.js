@@ -68,25 +68,24 @@ function formatarData(data)
 function sendJSON(){
 
     let username = document.querySelector('#username');
-    let msg = document.querySelector('#msg');
+    let message = document.querySelector('#msg');
 
-    let xhr = new XMLHttpRequest();
-    let url = "api/commits";
+    let xhttp = new XMLHttpRequest();
 
-    xhr.open("POST", url, true);
+    xhttp.open("POST", "api/commits", true);
 
-    xhr.setRequestHeader("Content-Type", "application/json");
-
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-
-            result.innerHTML = this.responseText;
-
-        }
-    };
+//    xhttp.setRequestHeader("Content-Type", "application/json");
+//
+//    xhttp.onreadystatechange = function () {
+//        if (xhttp.readyState === 4 && xhttp.status === 200) {
+//
+//            result.innerHTML = this.responseText;
+//
+//        }
+//    };
 
     var data = JSON.stringify({ "username": username.value, "msg": msg.value });
     console.log(data);
 
-    xhr.send(data);
+    xhttp.send(data);
 }
