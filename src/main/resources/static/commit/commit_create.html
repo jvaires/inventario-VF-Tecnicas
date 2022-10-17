@@ -10,7 +10,7 @@
 </head>
 <body class="body-create">
     <div class="formulario">
-        <form action="http://localhost:8080/api/commits" method="post" onsubmit="cadastraCommit()">
+        <form class="myForm" >
             <h1 class="commit-title">Commit</h1>
             <div class="area-label">
 <!--                <label for="username">Username</label>-->
@@ -20,8 +20,10 @@
 <!--                <label for="msg">Mensagem</label>-->
                 <input type="text" name="mensagem" id="msg" placeholder="Mensagem"/>
             </div>
-            <button type="submit" class="submit">Submit</button>
+            <button type="button" class="submit" onclick="cadastraCommit()" >Submit</button>
         </form>
     </div>
+
+    <script src="commit.js"></script>
 </body>
 </html>

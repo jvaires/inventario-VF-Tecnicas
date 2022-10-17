@@ -5,10 +5,7 @@ import br.edu.uni7.tecnicas.entities.Usuario;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.text.ParseException;
@@ -23,7 +20,7 @@ import java.util.stream.Collectors;
 public class CommitController {
     @PostMapping("api/commits")
     @ResponseBody
-    public ResponseEntity createCommit(){
+    public ResponseEntity createCommit(@RequestBody Commit commit){
         return new ResponseEntity(HttpStatus.CREATED);
     }
     List<Commit> commits = new ArrayList<>();

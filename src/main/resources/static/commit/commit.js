@@ -32,33 +32,36 @@ window.onload = function getBody() {
     // })
 
 
-// function fazPost(url, body){
-//     console.log("Body= ", body)
-//     let request = new XMLHttpRequest()
-//     request.open("POST", url, true)
-//     request.setRequestHeader("Content-type", "application/json")
-//     request.send(JSON.stringify(body))
-//
-//     request.onload = function (){
-//         console.log(this.responseText)
-//     }
-//     return request.responseText
-// }
-// function cadastraCommit(){
-//     event.preventDefault()
-//     let url = "http://localhost:8080/api/commits"
-//     let autor = document.getElementById("username").value
-//     let mensagem = document.getElementById("msg").value
-//     console.log(autor)
-//     console.log(mensagem)
-//
-//     let body = {
-//         "name": autor,
-//         "mensage": mensagem
-//     }
-//
-//     fazPost(url, body)
-// }
+function fazPost(url, body){
+    console.log("Body= ", body)
+    let request = new XMLHttpRequest()
+    request.open("POST", url, true)
+    request.setRequestHeader("Content-type", "application/json")
+    request.send(JSON.stringify(body))
+
+    request.onload = function (){
+        console.log(this.responseText)
+    }
+    return request.responseText
+}
+function cadastraCommit(){
+    event.preventDefault()
+    let url = "http://localhost:8080/api/commits"
+    let autor = document.getElementById("username").value
+    let mensagem = document.getElementById("msg").value
+    console.log(autor)
+    console.log(mensagem)
+
+    let body = {
+        "name": autor,
+        "mensagem": mensagem
+    }
+
+    fazPost(url, body)
+}
+
+const submit = document.querySelector( '.myForm').submit()
+
 
 function carregarCommits() {
     let htmlItemGroup;
