@@ -21,22 +21,15 @@ public class CommitController {
 
     List<Commit> commits = new ArrayList<>();
 
-    @PostMapping("api/commits")
+    @RequestMapping(value = "api/commits", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity createCommit(@RequestBody Commit commit){
-
-        if(commit != null){
-            String code;
-            while(true) {
-                code = commit.generateCode();
-
-            }
-        }
+        commits.add(commit);
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
 
-    @GetMapping ("api/commits")
+    @RequestMapping(value = "api/commits", method = RequestMethod.GET)
     @ResponseBody
     public Map<Date, List<Commit>> listCommits() throws ParseException {
 

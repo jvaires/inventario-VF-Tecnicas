@@ -70,22 +70,22 @@ function sendJSON(){
     let username = document.querySelector('#username');
     let message = document.querySelector('#msg');
 
-    let xhttp = new XMLHttpRequest();
+    let xtp = new XMLHttpRequest();
 
-    xhttp.open("POST", "api/commits", true);
+    xtp.open("POST", "api/commits", true);
 
-//    xhttp.setRequestHeader("Content-Type", "application/json");
-//
-//    xhttp.onreadystatechange = function () {
-//        if (xhttp.readyState === 4 && xhttp.status === 200) {
-//
-//            result.innerHTML = this.responseText;
-//
-//        }
-//    };
+    xtp.setRequestHeader("Content-Type", "application/json");
+
+    xtp.onreadystatechange = function () {
+        if (xtp.readyState === 4 && xtp.status === 200) {
+
+            result.innerHTML = this.responseText;
+
+        }
+    };
 
     var data = JSON.stringify({ "username": username.value, "msg": msg.value });
     console.log(data);
 
-    xhttp.send(data);
+    xtp.send(data);
 }
