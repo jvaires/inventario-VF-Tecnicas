@@ -5,10 +5,10 @@ const commitItemEndpoint = baseUrl + '/commit_item.html';
 const commitItemGroupEndpoint = baseUrl + '/commit_item_group.html';
 
 window.onload = function getBody() {
-    carregarCommits();
+    loadCommits();
 }
 
-function carregarCommits() {
+function loadCommits() {
     let htmlItemGroup;
     fetch(commitItemGroupEndpoint)
         .then((response) => response.text())
@@ -84,8 +84,6 @@ function sendJSON(){
         }
     };
 
-    var data = JSON.stringify({ "username": username.value, "msg": msg.value });
-    console.log(data);
-
+    let data = JSON.stringify({ "username": username.value, "msg": message.value });
     xtp.send(data);
 }

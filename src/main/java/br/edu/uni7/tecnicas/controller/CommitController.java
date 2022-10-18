@@ -20,25 +20,25 @@ import java.util.stream.Collectors;
 public class CommitController {
 
     List<Commit> commits = new ArrayList<>();
-
-    @RequestMapping(value = "api/commits", method = RequestMethod.POST)
+    @PostMapping("api/commits")
     @ResponseBody
     public ResponseEntity createCommit(@RequestBody Commit commit){
-        commits.add(commit);
-        return new ResponseEntity(HttpStatus.CREATED);
+        if(commit != null) {
+            commit.setData(new Date());
+            commit.setCodigo("2ko3412j3");
+            commits.add(commit);
+            return new ResponseEntity(HttpStatus.CREATED);
+        }else {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
     }
 
 
-    @RequestMapping(value = "api/commits", method = RequestMethod.GET)
+    @GetMapping( "api/commits")
     @ResponseBody
     public Map<Date, List<Commit>> listCommits() throws ParseException {
-
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-
-
-
         Map<Date, List<Commit>> commitsAgrupados = commits.stream().collect(Collectors.groupingBy(c -> c.getDiaData()));
-
         return commitsAgrupados;
     }
 

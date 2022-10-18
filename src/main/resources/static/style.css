@@ -63,7 +63,7 @@ header img{
 }
 .submit{
     place-self: center;
-    background: #6aee31;
+    background: #2f8603;
     padding: 15px 30px;
     color: white;
     font-family: 'Roboto', sans-serif;
@@ -292,7 +292,7 @@ div {
 }
 
 .btn-group-item {
-    color: v#c9d1d9;
+    color: #c9d1d9;
     background-color: #21262d;
     border-color: rgba(240,246,252,0.1);
     box-shadow: 0 0 transparent,0 0 transparent;;
@@ -369,4 +369,8 @@ div {
 
 .position-relative {
     position: relative !important;
+}
+.submit:hover{
+    cursor: pointer;
+    background-color: #6aee31;
 }
