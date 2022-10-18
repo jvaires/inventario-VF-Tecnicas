@@ -59,6 +59,7 @@ header img{
     height: 2.5rem;
     width: 50rem;
     color: white;
+    outline: none;
 }
 
 #msg{
