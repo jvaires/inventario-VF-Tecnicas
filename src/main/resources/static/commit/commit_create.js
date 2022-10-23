@@ -1,8 +1,8 @@
-window.onload = function getBody() {
-    loadListeners();
+window.onload = async function getBody() {
+    await loadListeners();
 }
 
-function loadListeners(){
+async function loadListeners(){
     const form = document.querySelector("#form-create-commit");
 
     if(form)
@@ -10,7 +10,7 @@ function loadListeners(){
         form.addEventListener("submit", function(e){
             e.preventDefault();
 
-            postData(createCommitEndpoint, buildJsonFormData(form), () => { window.location.href = baseUrl; });
+            postData(commitsEndpoint, buildJsonFormData(form), () => { window.location.href = baseUrl; });
         })
     }
 }

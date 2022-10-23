@@ -2,18 +2,27 @@ package br.edu.uni7.tecnicas.entities;
 
 import br.edu.uni7.tecnicas.entities.Usuario;
 
+import javax.persistence.*;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Calendar;
 import java.util.Date;
 
+@Entity
+@Table
 public class Commit{
     private String mensagem;
     private Date data;
+
+    @Id
     private String codigo;
 
-    private byte[] codigoSha;
+    @OneToOne
     private Usuario autor;
+
+    @Deprecated
+    protected Commit() {
+    }
 
     public Commit(String mensagem, Usuario autor, String codigo, Date data){
         this.mensagem = mensagem;

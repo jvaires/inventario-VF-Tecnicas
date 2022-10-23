@@ -5,11 +5,46 @@ const commitItemEndpoint = baseUrl + '/commit_item.html';
 const commitItemGroupEndpoint = baseUrl + '/commit_item_group.html';
 const commitUpdateEndpoint = baseUrl + '/commit_update.html';
 const commitCreateEndpoint = baseUrl + '/commit_create.html';
-const createCommitEndpoint = baseUrl + '/api/commits';
 
-function postData(url = '', data = {}, callback) {
-    fetch(url, {
+async function postData(url = '', data = {}, callback) {
+    await fetch(url, {
         method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify(data)
+    });
+
+    if(callback)
+        callback();
+}
+
+async function putData(url = '', data = {}, callback) {
+    await fetch(url, {
+        method: 'PUT',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify(data)
+    });
+
+    if(callback)
+        callback();
+}
+
+async function deleteData(url = '', data = {}, callback) {
+    await fetch(url, {
+        method: 'DELETE',
         mode: 'cors',
         cache: 'no-cache',
         credentials: 'same-origin',

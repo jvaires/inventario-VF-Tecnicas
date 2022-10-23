@@ -13,7 +13,7 @@ async function carregarCommits() {
             htmlItem = html;
         });
 
-    fetch(commitsEndpoint)
+    await fetch(commitsEndpoint)
         .then((response) => response.json())
         .then((data) => {
             if(data) {
@@ -25,7 +25,7 @@ async function carregarCommits() {
 
                     const docCommitGroup = parser.parseFromString(htmlItemGroup, "text/html");
 
-                    docCommitGroup.getElementById('data-commit').textContent = 'Commits on ' + formatarData(Date.parse(key));
+                    docCommitGroup.getElementById('data-commit').textContent = 'Commits on ' + formatDate(Date.parse(key));
 
                     const commitItemDom = docCommitGroup.getElementById('commit-item');
 
@@ -48,13 +48,39 @@ async function carregarCommits() {
         });
 }
 
-function formatarData(data)
+function formatDate(data)
 {
     let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(data);
     let mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(data);
     let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(data);
 
     return `${mo}. ${da}, ${ye}`;
+}
+
+function refUpdateCommit(updateButton)
+{
+    let itemId = updateButton.closest('.commit').getAttribute('item-id');
+
+    let url = new URL(commitUpdateEndpoint);
+
+    url.searchParams.append('commit-id', itemId);
+
+    location.href = url.href;
+}
+
+async function removeCommit(removeButton)
+{
+    if (confirm('Deseja remover o commit?')) {
+        let itemId = removeButton.closest('.commit').getAttribute('item-id');
+
+        let obj = new Object();
+
+        obj.codigo = itemId;
+
+        await deleteData(commitsEndpoint, obj, () => { window.location.href = baseUrl; });
+    } else {
+        console.log('Deletar commit cancelado!');
+    }
 }
 
 window.addEventListener("load", carregarCommits);

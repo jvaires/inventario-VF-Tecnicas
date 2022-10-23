@@ -4,23 +4,26 @@ import br.edu.uni7.tecnicas.common.Sha256Generator;
 import br.edu.uni7.tecnicas.dto.CommitDTO;
 import br.edu.uni7.tecnicas.entities.Commit;
 import br.edu.uni7.tecnicas.entities.Usuario;
+import br.edu.uni7.tecnicas.services.CommitService;
+import br.edu.uni7.tecnicas.services.UsuarioService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Controller
+@RestController
 public class CommitController {
 
-    Map<String, Commit> _commits = new HashMap<>();
+    private final CommitService commitService;
+    private final UsuarioService usuarioService;
+
+    public CommitController(CommitService commitService, UsuarioService usuarioService) {
+        this.commitService = commitService;
+        this.usuarioService = usuarioService;
+    }
 
     @PostMapping("api/commits")
     @ResponseBody
@@ -30,10 +33,16 @@ public class CommitController {
         {
             String codigoCommit = Sha256Generator.sha256(commitDTO.getMensagem() + commitDTO.getAutor() + new Random().nextInt());
 
-            _commits.put(codigoCommit, new Commit(commitDTO.getMensagem(),
-                    new Usuario(commitDTO.getAutor()),
+            Usuario usuario = new Usuario(commitDTO.getAutor());
+
+            usuarioService.saveUsuario(usuario);
+
+            Commit commit = new Commit(commitDTO.getMensagem(),
+                    usuario,
                     codigoCommit,
-                    new Date()));
+                    new Date());
+
+            commitService.saveCommit(commit);
 
             return new ResponseEntity(HttpStatus.CREATED);
         }
@@ -43,20 +52,38 @@ public class CommitController {
 
     @PutMapping("api/commits")
     @ResponseBody
-    public ResponseEntity updateCommit(@PathVariable CommitDTO commitDTO)
+    public ResponseEntity updateCommit(@RequestBody CommitDTO commitDTO)
     {
         if(commitDTO != null)
         {
-            if(_commits.containsKey(commitDTO.getCodigo()))
+            if(commitService.getCommitById(commitDTO.getCodigo()).isPresent())
             {
-                Commit commit = _commits.get(commitDTO.getCodigo());
+                Usuario usuario = usuarioService.saveUsuario(new Usuario(commitDTO.getAutor()));
 
-                commit.setMensagem(commitDTO.getMensagem());
-                commit.setAutor(new Usuario(commitDTO.getAutor()));
+                Commit commit = new Commit(commitDTO.getMensagem(), usuario, commitDTO.getCodigo(), new Date());
 
-                _commits.replace(commit.getCodigo(), commit);
+                commitService.saveCommit(commit);
 
                 return new ResponseEntity(HttpStatus.CREATED);
+            }
+
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
+    }
+
+    @DeleteMapping("api/commits")
+    @ResponseBody
+    public ResponseEntity deleteCommit(@RequestBody CommitDTO commitDTO)
+    {
+        if(commitDTO != null && commitDTO.getCodigo() != null && commitDTO.getCodigo().trim() != "")
+        {
+            if(commitService.getCommitById(commitDTO.getCodigo()).isPresent())
+            {
+                commitService.deleteCommit(commitDTO.getCodigo());
+
+                return new ResponseEntity(HttpStatus.OK);
             }
 
             return new ResponseEntity(HttpStatus.NOT_FOUND);
@@ -73,9 +100,9 @@ public class CommitController {
 
         if(codigoCommit != null && codigoCommit.trim() != "")
         {
-            if(_commits.containsKey(codigoCommit))
+            if(commitService.getCommitById(codigoCommit).isPresent())
             {
-                commitRetorno = _commits.get(codigoCommit);
+                commitRetorno = commitService.getCommitById(codigoCommit).get();
             }
         }
 
@@ -84,11 +111,9 @@ public class CommitController {
 
     @GetMapping ("api/commits")
     @ResponseBody
-    public Map<Date, List<Commit>> listCommits() throws ParseException {
+    public Map<Date, List<Commit>> listCommits() {
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-
-        Map<Date, List<Commit>> commitsAgrupados = _commits.values().stream().collect(Collectors.groupingBy(c -> c.getDiaData()));
+        Map<Date, List<Commit>> commitsAgrupados = commitService.getCommits().stream().collect(Collectors.groupingBy(c -> c.getDiaData()));
 
         return commitsAgrupados;
     }
