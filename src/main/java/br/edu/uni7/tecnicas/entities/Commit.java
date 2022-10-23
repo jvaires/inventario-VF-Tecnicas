@@ -17,7 +17,7 @@ public class Commit{
     @Id
     private String codigo;
 
-    @OneToOne
+    @ManyToOne
     private Usuario autor;
 
     @Deprecated
