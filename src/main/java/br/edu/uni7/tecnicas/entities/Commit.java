@@ -4,6 +4,7 @@ import br.edu.uni7.tecnicas.entities.Usuario;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -12,7 +13,6 @@ public class Commit{
     private Date data;
     private String codigo;
 
-    private byte[] codigoSha;
     private Usuario autor;
 
     public Commit(String mensagem, Usuario autor, String codigo, Date data){
@@ -107,15 +107,17 @@ public class Commit{
     }
 
     public void setAutor(Usuario autor) {
+
         this.autor = autor;
     }
 
     @Override
     public String toString() {
         return "Commit{" +
-                "nome='" + mensagem + '\'' +
+                "mensagem='" + mensagem + '\'' +
                 ", data=" + data +
-                ", codigo=" + codigo +
+                ", codigo='" + codigo + '\'' +
+                ", autor=" + autor +
                 '}';
     }
 }

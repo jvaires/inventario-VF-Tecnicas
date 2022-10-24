@@ -22,7 +22,6 @@ public class CommitController {
     @ResponseBody
     public ResponseEntity createCommit(@RequestBody Commit commit){
             commit.setData(new Date());
-            commit.getAutor();
             commit.setCodigo("213jo32ao");
             commits.add(commit);
             return new ResponseEntity(HttpStatus.CREATED);

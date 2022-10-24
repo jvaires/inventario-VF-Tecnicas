@@ -7,30 +7,8 @@ const commitItemGroupEndpoint = baseUrl + '/commit_item_group.html';
 window.onload = function getBody() {
     carregarCommits();
 }
-    // const update = {
-    //     autor: document.getElementById("username").value,
-    //     mensagem: document.getElementById("msg").value
-    // }
-    // const options ={
-    //     method: "POST",
-    //     headers: {
-    //         "Content-type": "application/json"
-    //     },
-    //     body: JSON.stringify(update)
-    // }
-    //
-    // fetch(commitsEndpoint, options)
-    //     .then(data =>{
-    //         if (!data.ok){
-    //             throw Error(data.status)
-    //         }
-    //         return data.json()
-    //     }).then(update => {
-    //         console.log(update)
-    // }).catch(e => {
-    //     console.log(e)
-    // })
-
+let autor = document.getElementById("username").value
+let mensagem = document.getElementById("msg").value
 
 function fazPost(url, body){
     console.log("Body= ", body)
@@ -47,14 +25,12 @@ function fazPost(url, body){
 function cadastraCommit(){
     event.preventDefault()
     let url = "http://localhost:8080/api/commits"
-    let autor = document.getElementById("username").value
-    let mensagem = document.getElementById("msg").value
     console.log(autor)
     console.log(mensagem)
 
     let body = {
         "name": autor,
-        "mensagem": mensagem
+        "codigo": mensagem
     }
 
     fazPost(url, body)
@@ -120,4 +96,15 @@ function formatarData(data)
 
     return `${mo}. ${da}, ${ye}`;
 }
+let xhr = new XMLHttpRequest();
+var data = JSON.stringify({
+    "autor":{
+        "nome": name.value
+    },
+    "mensagem": mensagem.value
+});
+
+console.log(data)
+xhr.open(data, commitsEndpoint)
+
 
