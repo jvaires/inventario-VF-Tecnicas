@@ -21,7 +21,11 @@ public class CommitController {
     @PostMapping("api/commits")
     @ResponseBody
     public ResponseEntity createCommit(@RequestBody Commit commit){
-        return new ResponseEntity(HttpStatus.CREATED);
+            commit.setData(new Date());
+            commit.getAutor();
+            commit.setCodigo("213jo32ao");
+            commits.add(commit);
+            return new ResponseEntity(HttpStatus.CREATED);
     }
     List<Commit> commits = new ArrayList<>();
 
