@@ -26,7 +26,6 @@ public class CommitController {
     }
 
     @PostMapping("api/commits")
-    @ResponseBody
     public ResponseEntity createCommit(@RequestBody CommitDTO commitDTO) throws JsonProcessingException {
 
         if(commitDTO != null)
@@ -51,7 +50,6 @@ public class CommitController {
     }
 
     @PutMapping("api/commits")
-    @ResponseBody
     public ResponseEntity updateCommit(@RequestBody CommitDTO commitDTO)
     {
         if(commitDTO != null)
@@ -74,7 +72,6 @@ public class CommitController {
     }
 
     @DeleteMapping("api/commits")
-    @ResponseBody
     public ResponseEntity deleteCommit(@RequestBody CommitDTO commitDTO)
     {
         if(commitDTO != null && commitDTO.getCodigo() != null && commitDTO.getCodigo().trim() != "")
@@ -93,7 +90,6 @@ public class CommitController {
     }
 
     @GetMapping("api/commits/{codigoCommit}")
-    @ResponseBody
     public Commit getCommit(@PathVariable String codigoCommit)
     {
         Commit commitRetorno = null;
@@ -110,7 +106,6 @@ public class CommitController {
     }
 
     @GetMapping ("api/commits")
-    @ResponseBody
     public Map<Date, List<Commit>> listCommits() {
 
         Map<Date, List<Commit>> commitsAgrupados = commitRepository.findAll().stream().collect(Collectors.groupingBy(c -> c.getDiaData()));
