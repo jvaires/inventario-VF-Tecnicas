@@ -25,6 +25,7 @@ public class CommitController {
     public ResponseEntity createCommit(@RequestBody Commit commit){
         if(commit != null) {
             commit.setData(new Date());
+            commit.setCodigo("kj1h423lui4h12");
             commits.add(commit);
             return new ResponseEntity(HttpStatus.CREATED);
         }else {

@@ -67,23 +67,23 @@ function formatarData(data)
 }
 function sendJSON(){
 
-    let autor = document.querySelector('#username');
+    let username = document.querySelector('#username');
     let message = document.querySelector('#msg');
 
-    let xtp = new XMLHttpRequest();
+    let sendData= new XMLHttpRequest();
 
-    xtp.open("POST", "api/commits", true);
+    sendData.open("POST", "api/commits", true);
 
-    xtp.setRequestHeader("Content-Type", "application/json");
+    sendData.setRequestHeader("Content-Type", "application/json");
 
-    xtp.onreadystatechange = function () {
-        if (xtp.readyState === 4 && xtp.status === 200) {
+    sendData.onreadystatechange = function () {
+        if (sendData.readyState === 4 && sendData.status === 200) {
 
             result.innerHTML = this.responseText;
 
         }
     };
 
-    let data = JSON.stringify({"autor":{"nome": autor.value}, "mensagem": message.value });
-    xtp.send(data);
+    var data = JSON.stringify({"autor":{"nome": username.value}, "mensagem": message.value });
+    sendData.send(data);
 }
