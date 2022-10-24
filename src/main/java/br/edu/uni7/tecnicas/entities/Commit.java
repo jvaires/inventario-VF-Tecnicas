@@ -113,7 +113,7 @@ public class Commit{
     @Override
     public String toString() {
         return "Commit{" +
-                "nome='" + mensagem + '\'' +
+                "nome='" + autor + '\'' +
                 ", data=" + data +
                 ", codigo=" + codigo +
                 '}';

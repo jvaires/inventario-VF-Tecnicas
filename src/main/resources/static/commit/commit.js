@@ -67,7 +67,7 @@ function formatarData(data)
 }
 function sendJSON(){
 
-    let username = document.querySelector('#username');
+    let autor = document.querySelector('#username');
     let message = document.querySelector('#msg');
 
     let xtp = new XMLHttpRequest();
@@ -84,6 +84,6 @@ function sendJSON(){
         }
     };
 
-    let data = JSON.stringify({ "username": username.value, "msg": message.value });
+    let data = JSON.stringify({"autor":{"nome": autor.value}, "mensagem": message.value });
     xtp.send(data);
 }
