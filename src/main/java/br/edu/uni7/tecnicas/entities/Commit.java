@@ -11,8 +11,6 @@ public class Commit{
     private String mensagem;
     private Date data;
     private String codigo;
-
-    private byte[] codigoSha;
     private Usuario autor;
 
     public Commit(String mensagem, Usuario autor, String codigo, Date data){
@@ -113,9 +111,10 @@ public class Commit{
     @Override
     public String toString() {
         return "Commit{" +
-                "nome='" + mensagem + '\'' +
+                "mensagem='" + mensagem + '\'' +
                 ", data=" + data +
-                ", codigo=" + codigo +
+                ", codigo='" + codigo + '\'' +
+                ", autor=" + autor +
                 '}';
     }
 }

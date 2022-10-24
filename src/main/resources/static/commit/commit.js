@@ -67,8 +67,8 @@ function formatarData(data)
 }
 function sendJSON(){
 
-    let nome = document.querySelector('#username');
-    let codigo = document.querySelector('#msg');
+    let autor = document.querySelector('#username');
+    let mensagem = document.querySelector('#msg');
 
     let xhr = new XMLHttpRequest();
     let url = "api/commits";
@@ -85,7 +85,7 @@ function sendJSON(){
         }
     };
 
-    var data = JSON.stringify({    "autor": {"nome":nome.value}, "codigo": codigo.value });
+    var data = JSON.stringify({ "autor": autor.value, "mensagem": mensagem.value });
     console.log(data);
 
     xhr.send(data);
