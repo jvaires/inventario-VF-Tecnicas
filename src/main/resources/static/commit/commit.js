@@ -73,11 +73,9 @@ async function removeCommit(removeButton)
     if (confirm('Deseja remover o commit?')) {
         let itemId = removeButton.closest('.commit').getAttribute('item-id');
 
-        let obj = new Object();
+        let commit = new Commit(itemId, null, null, null);
 
-        obj.codigo = itemId;
-
-        await deleteData(commitsEndpoint, obj, () => { window.location.href = baseUrl; });
+        await deleteData(commitsEndpoint, commit, () => { window.location.href = baseUrl; });
     } else {
         console.log('Deletar commit cancelado!');
     }

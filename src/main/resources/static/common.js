@@ -6,6 +6,24 @@ const commitItemGroupEndpoint = baseUrl + '/commit_item_group.html';
 const commitUpdateEndpoint = baseUrl + '/commit_update.html';
 const commitCreateEndpoint = baseUrl + '/commit_create.html';
 
+class Usuario
+{
+    constructor(codigo, nome) {
+        this.codigo = codigo;
+        this.nome = nome;
+    }
+}
+
+class Commit
+{
+    constructor(codigo, mensagem, data, autor) {
+        this.codigo = codigo;
+        this.mensagem = mensagem;
+        this.data = data;
+        this.autor = autor;
+    }
+}
+
 async function postData(url = '', data = {}, callback) {
     await fetch(url, {
         method: 'POST',
@@ -68,9 +86,4 @@ function buildJsonFormData(form) {
     }
 
     return jsonFormData;
-}
-
-function redirectWithParameter(url, parameter, value)
-{
-
 }

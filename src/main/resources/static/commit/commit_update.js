@@ -24,13 +24,18 @@ function fillCommitForm(json)
 
 async function loadListeners(){
     const form = document.querySelector("#form-update-commit");
+    const { elements } = document.querySelector("#form-update-commit");
 
     if(form)
     {
         form.addEventListener("submit", function(e){
+
             e.preventDefault();
 
-            putData(commitsEndpoint, buildJsonFormData(form), () => { window.location.href = baseUrl; });
+            let usuario = new Usuario(null, elements.namedItem('autor').value);
+            let commit = new Commit(elements.namedItem('codigo').value, elements.namedItem('mensagem').value, null, usuario);
+
+            putData(commitsEndpoint, commit, () => { window.location.href = baseUrl; });
         })
     }
 }

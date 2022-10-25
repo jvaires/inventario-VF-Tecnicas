@@ -1,9 +1,7 @@
 package br.edu.uni7.tecnicas.controller;
 
 import br.edu.uni7.tecnicas.common.Sha256Generator;
-import br.edu.uni7.tecnicas.dto.CommitDTO;
 import br.edu.uni7.tecnicas.entities.Commit;
-import br.edu.uni7.tecnicas.entities.Usuario;
 import br.edu.uni7.tecnicas.repositories.ICommitRepository;
 import br.edu.uni7.tecnicas.repositories.IUsuarioRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -26,20 +24,16 @@ public class CommitController {
     }
 
     @PostMapping("api/commits")
-    public ResponseEntity createCommit(@RequestBody CommitDTO commitDTO) throws JsonProcessingException {
+    public ResponseEntity createCommit(@RequestBody Commit commit) throws JsonProcessingException {
 
-        if(commitDTO != null)
+        if(commit != null)
         {
-            String codigoCommit = Sha256Generator.sha256(commitDTO.getMensagem() + commitDTO.getAutor() + new Random().nextInt());
+            String codigoCommit = Sha256Generator.sha256(commit.getMensagem() + commit.getAutor() + new Random().nextInt());
 
-            Usuario usuario = new Usuario(commitDTO.getAutor());
+            usuarioRepository.save(commit.getAutor());
 
-            usuarioRepository.save(usuario);
-
-            Commit commit = new Commit(commitDTO.getMensagem(),
-                    usuario,
-                    codigoCommit,
-                    new Date());
+            commit.setCodigo(codigoCommit);
+            commit.setData(new Date());
 
             commitRepository.save(commit);
 
@@ -50,15 +44,15 @@ public class CommitController {
     }
 
     @PutMapping("api/commits")
-    public ResponseEntity updateCommit(@RequestBody CommitDTO commitDTO)
+    public ResponseEntity updateCommit(@RequestBody Commit commit)
     {
-        if(commitDTO != null)
+        if(commit != null)
         {
-            if(commitRepository.existsById(commitDTO.getCodigo()))
+            if(commitRepository.existsById(commit.getCodigo()))
             {
-                Usuario usuario = usuarioRepository.save(new Usuario(commitDTO.getAutor()));
+                usuarioRepository.save(commit.getAutor());
 
-                Commit commit = new Commit(commitDTO.getMensagem(), usuario, commitDTO.getCodigo(), new Date());
+                commit.setData(new Date());
 
                 commitRepository.save(commit);
 
@@ -72,13 +66,13 @@ public class CommitController {
     }
 
     @DeleteMapping("api/commits")
-    public ResponseEntity deleteCommit(@RequestBody CommitDTO commitDTO)
+    public ResponseEntity deleteCommit(@RequestBody Commit commit)
     {
-        if(commitDTO != null && commitDTO.getCodigo() != null && commitDTO.getCodigo().trim() != "")
+        if(commit != null && commit.getCodigo() != null && commit.getCodigo().trim() != "")
         {
-            if(commitRepository.existsById(commitDTO.getCodigo()))
+            if(commitRepository.existsById(commit.getCodigo()))
             {
-                commitRepository.deleteById(commitDTO.getCodigo());
+                commitRepository.deleteById(commit.getCodigo());
 
                 return new ResponseEntity(HttpStatus.OK);
             }
