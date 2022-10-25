@@ -4,7 +4,6 @@ import br.edu.uni7.tecnicas.common.Sha256Generator;
 import br.edu.uni7.tecnicas.entities.Commit;
 import br.edu.uni7.tecnicas.repositories.ICommitRepository;
 import br.edu.uni7.tecnicas.repositories.IUsuarioRepository;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +23,7 @@ public class CommitController {
     }
 
     @PostMapping("api/commits")
-    public ResponseEntity createCommit(@RequestBody Commit commit) throws JsonProcessingException {
+    public ResponseEntity createCommit(@RequestBody Commit commit) {
 
         if(commit != null)
         {
