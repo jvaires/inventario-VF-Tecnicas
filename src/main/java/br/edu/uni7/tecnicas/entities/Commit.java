@@ -2,15 +2,19 @@ package br.edu.uni7.tecnicas.entities;
 
 import br.edu.uni7.tecnicas.entities.Usuario;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
+@Entity
 public class Commit{
     private String mensagem;
     private Date data;
+    @Id
     private String codigo;
 
     private Usuario autor;
@@ -20,6 +24,10 @@ public class Commit{
         this.data = data;
         this.autor = autor;
         this.codigo = codigo;
+    }
+
+    public Commit() {
+
     }
 
     public String getMensagem() {
