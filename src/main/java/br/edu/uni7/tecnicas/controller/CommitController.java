@@ -2,6 +2,7 @@ package br.edu.uni7.tecnicas.controller;
 
 import br.edu.uni7.tecnicas.entities.Commit;
 import br.edu.uni7.tecnicas.entities.Usuario;
+import br.edu.uni7.tecnicas.repository.CommitRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -18,15 +19,22 @@ import java.util.stream.Collectors;
 
 @Controller
 public class CommitController {
-
-    List<Commit> commits = new ArrayList<>();
+    private CommitRepository repository;
+//    List<Commit> commits = new ArrayList<>();
     @PostMapping("api/commits")
     @ResponseBody
     public ResponseEntity createCommit(@RequestBody Commit commit){
         if(commit != null) {
             commit.setData(new Date());
-            commit.setCodigo("kj1h423lui4h12");
-            commits.add(commit);
+            while(true) {
+                String code = (commit.generateCode());
+                if(!repository.existsById(code)){
+                    commit.setCodigo(code);
+                    break;
+                }
+            }
+            repository.save(commit);
+//          commits.add(commit);
             return new ResponseEntity(HttpStatus.CREATED);
         }else {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
@@ -36,10 +44,13 @@ public class CommitController {
 
     @GetMapping( "api/commits")
     @ResponseBody
-    public Map<Date, List<Commit>> listCommits() throws ParseException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Map<Date, List<Commit>> commitsAgrupados = commits.stream().collect(Collectors.groupingBy(c -> c.getDiaData()));
-        return commitsAgrupados;
+    public Iterable<Commit> listCommits(){
+        return repository.findAll();
     }
+//    public Map<Date, List<Commit>> listCommits() throws ParseException {
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+//        Map<Date, List<Commit>> commitsAgrupados = commits.stream().collect(Collectors.groupingBy(c -> c.getDiaData()));
+//        return commitsAgrupados;
+//    }
 
 }

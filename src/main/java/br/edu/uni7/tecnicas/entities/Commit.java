@@ -2,14 +2,17 @@ package br.edu.uni7.tecnicas.entities;
 
 import br.edu.uni7.tecnicas.entities.Usuario;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Calendar;
 import java.util.Date;
-
+@Entity
 public class Commit{
     private String mensagem;
     private Date data;
+    @Id
     private String codigo;
 
     private byte[] codigoSha;
@@ -100,6 +103,14 @@ public class Commit{
         }
 
         return intervaloTempo + " " + grandeza;
+    }
+    public String generateCode(){
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        String code = "";
+        for(int i = 0; i < 10; i++){
+            code += characters.charAt((int) Math.floor(Math.random() * characters.length()));
+        }
+        return code;
     }
 
     public Usuario getAutor() {
