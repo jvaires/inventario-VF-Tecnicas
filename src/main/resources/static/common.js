@@ -5,7 +5,7 @@ const commitItem = baseUrl + '/commit_item.html';
 const commitItemGroup = baseUrl + '/commit_item_group.html';
 const commitUpdate = baseUrl + '/commit_update.html';
 const commitCreate = baseUrl + '/commit_create.html';
-
+//
 class Usuario
 {
     constructor(codigo, nome) {
