@@ -71,7 +71,11 @@ public class CommitController {
         {
             if(commitRepository.existsById(commit.getCodigo()))
             {
-                commitRepository.deleteById(commit.getCodigo());
+                commit = commitRepository.getReferenceById(commit.getCodigo());
+
+                commitRepository.delete(commit);
+
+                usuarioRepository.delete(commit.getAutor());
 
                 return new ResponseEntity(HttpStatus.OK);
             }

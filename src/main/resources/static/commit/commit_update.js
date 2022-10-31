@@ -18,6 +18,7 @@ function fillCommitForm(json)
     let { elements } = document.querySelector('#form-update-commit');
 
     elements.namedItem('autor').value = json.autor.nome;
+    elements.namedItem('codigo-autor').value = json.autor.codigo;
     elements.namedItem('mensagem').value = json.mensagem;
     elements.namedItem('codigo').value = json.codigo;
 }
@@ -32,7 +33,7 @@ async function loadListeners(){
 
             e.preventDefault();
 
-            let usuario = new Usuario(null, elements.namedItem('autor').value);
+            let usuario = new Usuario(elements.namedItem('codigo-autor').value, elements.namedItem('autor').value);
             let commit = new Commit(elements.namedItem('codigo').value, elements.namedItem('mensagem').value, null, usuario);
 
             putData(commitsEndpoint, commit, () => { window.location.href = baseUrl; });
