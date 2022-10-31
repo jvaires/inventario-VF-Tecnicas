@@ -1,10 +1,10 @@
 const baseUrl = 'http://localhost:8080';
 
 const commitsEndpoint = baseUrl + '/api/commits';
-const commitItemEndpoint = baseUrl + '/commit_item.html';
-const commitItemGroupEndpoint = baseUrl + '/commit_item_group.html';
-const commitUpdateEndpoint = baseUrl + '/commit_update.html';
-const commitCreateEndpoint = baseUrl + '/commit_create.html';
+const commitItem = baseUrl + '/commit_item.html';
+const commitItemGroup = baseUrl + '/commit_item_group.html';
+const commitUpdate = baseUrl + '/commit_update.html';
+const commitCreate = baseUrl + '/commit_create.html';
 
 class Usuario
 {

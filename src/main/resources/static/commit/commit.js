@@ -1,13 +1,13 @@
 async function carregarCommits() {
     let htmlItemGroup;
-    await fetch(commitItemGroupEndpoint)
+    await fetch(commitItemGroup)
         .then((response) => response.text())
         .then((html) => {
             htmlItemGroup = html;
         });
 
     let htmlItem;
-    await fetch(commitItemEndpoint)
+    await fetch(commitItem)
         .then((response) => response.text())
         .then((html) =>{
             htmlItem = html;
@@ -61,7 +61,7 @@ function refUpdateCommit(updateButton)
 {
     let itemId = updateButton.closest('.commit').getAttribute('item-id');
 
-    let url = new URL(commitUpdateEndpoint);
+    let url = new URL(commitUpdate);
 
     url.searchParams.append('commit-id', itemId);
 
