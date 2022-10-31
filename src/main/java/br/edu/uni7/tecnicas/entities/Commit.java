@@ -4,6 +4,7 @@ import br.edu.uni7.tecnicas.entities.Usuario;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Arrays;
@@ -16,7 +17,7 @@ public class Commit{
     private Date data;
     @Id
     private String codigo;
-
+    @ManyToOne
     private Usuario autor;
 
     public Commit(String mensagem, Usuario autor, String codigo, Date data){
