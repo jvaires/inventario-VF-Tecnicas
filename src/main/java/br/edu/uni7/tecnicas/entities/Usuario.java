@@ -1,7 +1,11 @@
 package br.edu.uni7.tecnicas.entities;
 
-public class Usuario {
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
+public class Usuario {
+    @Id
     private String nome;
 
     public Usuario(String nome)
