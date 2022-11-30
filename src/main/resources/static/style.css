@@ -1,0 +1,17 @@
+nav{
+    background: yellow  ;
+    padding: 20px;
+    text-align: center;
+}
+.container{
+    margin-top: 50px;
+
+}
+.col{
+    border: 1px solid black;
+    align-items: center;
+}
+.hstack{
+    justify-content: center;
+    margin-top: 50px;
+}
